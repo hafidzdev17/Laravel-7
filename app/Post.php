@@ -3,15 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
 
 class Post extends Model
 {
+    protected $guarded = [];
 
-    protected $fillable = ['name', 'email', 'age', 'address'];
-
-    public function user()
+    public function comments()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
 }

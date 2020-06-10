@@ -88,9 +88,10 @@
                         if (response.success) {
 
                             Swal.fire({
-                                type: 'success',
-                                title: 'Login Berhasil!',
-                                text: 'Anda akan di arahkan dalam 3 Detik',
+                                title: "Login Sukses",
+                                text: "anda akan diarahkan dalam 3 detik!",
+                                icon: "success",
+                                button: "Aww yiss!",
                                 timer: 3000,
                                 showCancelButton: false,
                                 showConfirmButton: false

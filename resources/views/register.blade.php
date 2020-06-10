@@ -92,7 +92,6 @@
 
                 //ajax
                 $.ajax({
-
                     url: "{{ route('register.store') }}",
                     type: "POST",
                     cache: false,

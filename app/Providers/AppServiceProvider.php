@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('markdown', function () {
+            return $this->markdown;
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind('apa itu laravel?', function () {
+            return 'Laravel adalah framework Laravel paling keren dan  elegan.';
+        });
     }
 }

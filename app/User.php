@@ -6,10 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +21,11 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    public function searchableAs()
+    {
+        return 'users_index';
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -57,5 +64,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function komentar()
+    {
+        return $this->belongsTo(Komentar::class, 'id', 'id_user');
+    }
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class, 'id', 'user_id');
     }
 }

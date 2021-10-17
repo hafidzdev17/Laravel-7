@@ -30,6 +30,7 @@ Route::livewire('/edit/{id}', 'post.edit')->name('post.edit');
 // sinau collection
 // Route::get('/collect', 'CollectionController@index');
 // Route::get('/latihan', 'CollectionController@latihan');
+Route::get('/latihan', 'CollectionController@eloquent');
 
 // sinau container
 // Route::get('pay', 'PayOrderController@store');

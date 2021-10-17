@@ -38,4 +38,21 @@ class CollectionController extends Controller
                 echo $item;
             });
     }
+
+    public function eloquent()
+    {
+        $data = User::where('status', 'nonaktif')->get();
+
+        $row = collect($data)
+            ->filter(function ($item) {
+                return  $item->status == "aktif";
+            })
+            ->each(function ($item) {
+                return $item;
+            })->all();
+
+        return view('user', [
+            'item' => $row
+        ]);
+    }
 }
